@@ -126,14 +126,14 @@ EOL
 install_theme() {
     local theme_directory="/Applications/MacSploit.app/Contents/Resources/CodeViewer_CodeViewer.bundle/Contents/Resources/ace.bundle"
     cd "$HOME/Downloads" || exit 1
-    custom_macsploit_theme="custom_macsploit_theme.js"
+    custom_macsploit_theme="macsploit_theme_zackdaquack.js"
     theme_tomorrow_night="theme-tomorrow_night.js"
     if [ -e "$custom_macsploit_theme" ]; then
         mv "$custom_macsploit_theme" "$theme_tomorrow_night"
         mv "$theme_tomorrow_night" "$theme_directory"
         echo "Your theme has been installed! Enjoy! - ZackDaQuack"
     else
-        echo "The theme file does not exist! Make sure you didn't rename or delete it!"
+        echo "The theme file does not exist! Make sure you didn't rename or delete it! *sad quack*"
         exit 1
     fi
 }
@@ -148,11 +148,14 @@ echo "\\______\\ \\_/____/(____  /\\___  >__|_ \\|__|   "
 echo "       \\__>          \\/     \\/     \\/         "
 echo ""
 echo "DIY custom theme creator for Macsploit! Made by ZackDaQuack!"
+echo "v1.0"
 echo ""
 echo ""
 
 read -p "Press Enter!" idk
+echo ""
 read -p "Select your mode: Create (C) or Install (I): " smode
+echo ""
 
 if [ "$smode" == "C" ] || [ "$smode" == "c" ]; then
     read -p "Add your background image link: " bgimg
@@ -160,8 +163,8 @@ if [ "$smode" == "C" ] || [ "$smode" == "c" ]; then
     read -p "What color do you want the text selected to be? (HEX ONLY!): " stxtclr
     read -p "What color do you want the text shadow to be? (HEX ONLY!): " txtsha
 
-    generate_css "$bgimg" "$txtclr" "$stxtclr" "$txtsha" > "$HOME/Downloads/custom_macsploit_theme.js"
-    echo "CSS code has been saved to Downloads as 'custom_macsploit_theme.js'"
+    generate_css "$bgimg" "$txtclr" "$stxtclr" "$txtsha" > "$HOME/Downloads/macsploit_theme_zackdaquack.js"
+    echo "CSS code has been saved to Downloads as 'macsploit_theme_zackdaquack.js'"
 
     read -p "Would you like to install your theme now? (Y/N): " ain
     if [ "$ain" == "Y" ] || [ "$ain" == "y" ]; then
