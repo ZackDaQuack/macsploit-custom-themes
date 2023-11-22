@@ -148,27 +148,33 @@ echo "\\______\\ \\_/____/(____  /\\___  >__|_ \\|__|   "
 echo "       \\__>          \\/     \\/     \\/         "
 echo ""
 echo "DIY custom theme creator for Macsploit! Made by ZackDaQuack!"
+echo "(Debug Edition)"
 echo ""
-echo ""
 
-read -p "Select your mode: Create (C) or Install (I): " smode
 
-if [ "$smode" == "C" ] || [ "$smode" == "c" ]; then
-    read -p "Add your background image link: " bgimg
-    read -p "What color do you want the text to be? (HEX ONLY!): " txtclr
-    read -p "What color do you want the text selected to be? (HEX ONLY!): " stxtclr
-    read -p "What color do you want the text shadow to be? (HEX ONLY!): " txtsha
+while true; do
+    read -p "Select your mode: Create (C) or Install (I): " smode
 
-    generate_css "$bgimg" "$txtclr" "$stxtclr" "$txtsha" > "$HOME/Downloads/custom_macsploit_theme.js"
-    echo "CSS code has been saved to Downloads as 'custom_macsploit_theme.js'"
+    if [ "$smode" == "C" ] || [ "$smode" == "c" ]; then
+        read -p "Add your background image link: " bgimg
+        read -p "What color do you want the text to be? (HEX ONLY!): " txtclr
+        read -p "What color do you want the text selected to be? (HEX ONLY!): " stxtclr
+        read -p "What color do you want the text shadow to be? (HEX ONLY!): " txtsha
 
-    read -p "Would you like to install your theme now? (Y/N): " ain
-    if [ "$ain" == "Y" ] || [ "$ain" == "y" ]; then
+        generate_css "$bgimg" "$txtclr" "$stxtclr" "$txtsha" > "$HOME/Downloads/custom_macsploit_theme.js"
+        echo "Theme has been saved to Downloads as 'custom_macsploit_theme.js'"
+
+        read -p "Would you like to install your theme now? (Y/N): " ain
+        if [ "$ain" == "Y" ] || [ "$ain" == "y" ]; then
+            install_theme
+        fi
+        break
+
+    elif [ "$smode" == "I" ] || [ "$smode" == "i" ]; then
         install_theme
-    fi
+        break
 
-elif [ "$smode" == "I" ] || [ "$smode" == "i" ]; then
-    install_theme
-else
-    echo "Mode not recognized! Rerun the script and select a valid mode!"
-fi
+    else
+        echo "Mode not recognized! Please try again."
+    fi
+done
