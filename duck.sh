@@ -152,29 +152,28 @@ echo "(Debug Edition)"
 echo ""
 
 
-while true; do
+if [ -n "$1" ]; then
+    smode="$1"
+else
     read -p "Select your mode: Create (C) or Install (I): " smode
+fi
 
-    if [ "$smode" == "C" ] || [ "$smode" == "c" ]; then
-        read -p "Add your background image link: " bgimg
-        read -p "What color do you want the text to be? (HEX ONLY!): " txtclr
-        read -p "What color do you want the text selected to be? (HEX ONLY!): " stxtclr
-        read -p "What color do you want the text shadow to be? (HEX ONLY!): " txtsha
+if [ "$smode" == "C" ] || [ "$smode" == "c" ]; then
+    read -p "Add your background image link: " bgimg
+    read -p "What color do you want the text to be? (HEX ONLY!): " txtclr
+    read -p "What color do you want the text selected to be? (HEX ONLY!): " stxtclr
+    read -p "What color do you want the text shadow to be? (HEX ONLY!): " txtsha
 
-        generate_css "$bgimg" "$txtclr" "$stxtclr" "$txtsha" > "$HOME/Downloads/custom_macsploit_theme.js"
-        echo "Theme has been saved to Downloads as 'custom_macsploit_theme.js'"
+    generate_css "$bgimg" "$txtclr" "$stxtclr" "$txtsha" > "$HOME/Downloads/custom_macsploit_theme.js"
+    echo "CSS code has been saved to Downloads as 'custom_macsploit_theme.js'"
 
-        read -p "Would you like to install your theme now? (Y/N): " ain
-        if [ "$ain" == "Y" ] || [ "$ain" == "y" ]; then
-            install_theme
-        fi
-        break
-
-    elif [ "$smode" == "I" ] || [ "$smode" == "i" ]; then
+    read -p "Would you like to install your theme now? (Y/N): " ain
+    if [ "$ain" == "Y" ] || [ "$ain" == "y" ]; then
         install_theme
-        break
-
-    else
-        echo "Mode not recognized! Please try again."
     fi
-done
+
+elif [ "$smode" == "I" ] || [ "$smode" == "i" ]; then
+    install_theme
+else
+    echo "Mode not recognized! Rerun the script and select a valid mode!"
+fi
