@@ -153,6 +153,7 @@ echo ""
 
 
 read -p "" idk
+read -p "Press Enter" idk
 read -p "Select your mode: Create (C) or Install (I): " smode
 
 if [ "$smode" == "C" ] || [ "$smode" == "c" ]; then
