@@ -148,15 +148,12 @@ echo "\\______\\ \\_/____/(____  /\\___  >__|_ \\|__|   "
 echo "       \\__>          \\/     \\/     \\/         "
 echo ""
 echo "DIY custom theme creator for Macsploit! Made by ZackDaQuack!"
-echo "(Debug Edition)"
+echo ""
 echo ""
 
 
-if [ -n "$1" ]; then
-    smode="$1"
-else
-    read -p "Select your mode: Create (C) or Install (I): " smode
-fi
+read -p "" idk
+read -p "Select your mode: Create (C) or Install (I): " smode
 
 if [ "$smode" == "C" ] || [ "$smode" == "c" ]; then
     read -p "Add your background image link: " bgimg
