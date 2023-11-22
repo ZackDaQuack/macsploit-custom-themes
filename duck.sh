@@ -24,7 +24,7 @@ define("ace/theme/tomorrow_night", ["require", "exports", "module", "ace/lib/dom
     .ace-tomorrow_night-theme {
       background: url('${background_image}') no-repeat center center fixed;
       background-size: cover;
-      color: #ede8e8; 
+      color: ${text_color}; 
       text-shadow: ${text_shadow};
       border: #edebeb;
     }
