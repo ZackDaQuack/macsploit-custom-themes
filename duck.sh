@@ -99,15 +99,15 @@ define("ace/theme/tomorrow_night", ["require", "exports", "module", "ace/lib/dom
     }
     
     .ace-tomorrow_night-theme .ace_constant.ace_other {
-      color: ${text_color};
+      color: ${text_color_main};
     }
     
     .ace-tomorrow_night-theme .ace_invalid {
-      color: ${text_color};
+      color: ${text_color_main};
       background-color: transparent;
     }
     .ace-tomorrow_night-theme .ace_invalid.ace_deprecated {
-      color: ${text_color};
+      color: ${text_color_main};
       background-color: transparent;
     }
     
