@@ -1,64 +1,52 @@
 #!/bin/bash
 
 generate_css() {
-    background_image="$1"
-    text_color_main="$2"
-    text_color_string="$3"
-    storage="$4"
-    key_word="$5"
-    num_color="$6"
-    text_shadow="$7"
-    var_func="$8"
-    bracket="$9"
-    cursor="$10"
-    active_line="$11"
-    selection_color="$12"
-    line_number="$13"
+    args=("$@")
 
     cat <<EOL
-    define("ace/theme/tomorrow_night", ["require", "exports", "module", "ace/lib/dom"], function(e, t, n) {
-        t.isDark = !0;
-        t.cssClass = "ace-tomorrow_night-theme";
-        t.cssText = ".ace-tomorrow_night-theme .ace_gutter {color: ${line_number};}" +
-            ".ace-tomorrow_night-theme .ace_print-margin {width: 1px;background: #A9B7C6;}" +
-            ".ace-tomorrow_night-theme {background: url('${background_image}') no-repeat center center fixed;background-size: cover;color: ${text_color_main}; text-shadow: ${text_shadow};border: #8080B7;}" +
-            ".ace-tomorrow_night-theme .ace_entity.ace_other.ace_attribute-name," +
-            ".ace-tomorrow_night-theme .ace_storage {color: ${storage};}" +
-            ".ace-tomorrow_night-theme .ace_cursor {color: ${cursor};}," +
-            ".ace-tomorrow_night-theme .ace_string.ace_regexp {color: #bf616a;}" +
-            ".ace-tomorrow_night-theme .ace_marker-layer .ace_active-line {background: ${active_line}cc;}" +
-            ".ace-tomorrow_night-theme .ace_marker-layer .ace_selection {background: ${selection_color}cc;}" +
-            ".ace-tomorrow_night-theme.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #2e3440;}" +
-            ".ace-tomorrow_night-theme .ace_marker-layer .ace_step {background: #ebcb8b;}" +
-            ".ace-tomorrow_night-theme .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid ${bracket}66;}" +
-            ".ace-tomorrow_night-theme .ace_gutter-active-line {background-color: ${active_line}cc;}" +
-            ".ace-tomorrow_night-theme .ace_marker-layer .ace_selected-word {border: 1px solid ${selection_color}66;}" +
-            ".ace-tomorrow_night-theme .ace_invisible {color: #4c566a;}" +
-            ".ace-tomorrow_night-theme .ace_keyword, .ace-tomorrow_night-theme .ace_meta, .ace-tomorrow_night-theme .ace_support.ace_class, .ace-tomorrow_night-theme .ace_support.ace_type {color: ${key_word};}" +
-            ".ace-tomorrow_night-theme .ace_constant.ace_character, .ace-tomorrow_night-theme .ace_constant.ace_other {color: #d8dee9;}" +
-            ".ace-tomorrow_night-theme .ace_constant.ace_language {color: #BB7031;}" +
-            ".ace-tomorrow_night-theme .ace_constant.ace_escape {color: #ebcB8b;}" +
-            ".ace-tomorrow_night-theme .ace_constant.ace_numeric {color: ${num_color};}" +
-            ".ace-tomorrow_night-theme .ace_fold {background-color: #4c566a;border-color: #d8dee9;}" +
-            ".ace-tomorrow_night-theme .ace_entity.ace_name.ace_function, .ace-tomorrow_night-theme .ace_entity.ace_name.ace_tag, .ace-tomorrow_night-theme .ace_support.ace_function, .ace-tomorrow_night-theme .ace_variable, .ace-tomorrow_night-theme .ace_variable.ace_language {color: ${var_func};}" +
-            ".ace-tomorrow_night-theme .ace_string {color: ${text_color_string};}" +
-            ".ace-tomorrow_night-theme .ace_comment {color: ${text_color_comment};}" +
-            ".ace-tomorrow_night-theme .ace_indent-guide {box-shadow: inset -1px 0 0 0 #434c5eb3;}";
-        
-        t.$selectionColorConflict = !0;
+define("ace/theme/tomorrow_night", ["require", "exports", "module", "ace/lib/dom"], function(e, t, n) {
+    t.isDark = !0;
+    t.cssClass = "ace-tomorrow_night-theme";
+    t.cssText = ".ace-tomorrow_night-theme .ace_gutter {color: ${args[12]};}" +
+        ".ace-tomorrow_night-theme .ace_print-margin {width: 1px;background: #A9B7C6;}" +
+        ".ace-tomorrow_night-theme {background: url('${args[0]}') no-repeat center center fixed;background-size: cover;color: ${args[1]}; text-shadow: ${args[6]};border: #8080B7;}" +
+        ".ace-tomorrow_night-theme .ace_entity.ace_other.ace_attribute-name," +
+        ".ace-tomorrow_night-theme .ace_storage {color: ${args[3]};}" +
+        ".ace-tomorrow_night-theme .ace_cursor {color: ${args[9]};}," +
+        ".ace-tomorrow_night-theme .ace_string.ace_regexp {color: #bf616a;}" +
+        ".ace-tomorrow_night-theme .ace_marker-layer .ace_active-line {background: ${args[10]}cc;}" +
+        ".ace-tomorrow_night-theme .ace_marker-layer .ace_selection {background: ${args[11]}cc;}" +
+        ".ace-tomorrow_night-theme.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #2e3440;}" +
+        ".ace-tomorrow_night-theme .ace_marker-layer .ace_step {background: #ebcb8b;}" +
+        ".ace-tomorrow_night-theme .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid ${args[8]}66;}" +
+        ".ace-tomorrow_night-theme .ace_gutter-active-line {background-color: ${args[10]}cc;}" +
+        ".ace-tomorrow_night-theme .ace_marker-layer .ace_selected-word {border: 1px solid ${args[11]}66;}" +
+        ".ace-tomorrow_night-theme .ace_invisible {color: #4c566a;}" +
+        ".ace-tomorrow_night-theme .ace_keyword, .ace-tomorrow_night-theme .ace_meta, .ace-tomorrow_night-theme .ace_support.ace_class, .ace-tomorrow_night-theme .ace_support.ace_type {color: ${args[4]};}" +
+        ".ace-tomorrow_night-theme .ace_constant.ace_character, .ace-tomorrow_night-theme .ace_constant.ace_other {color: #d8dee9;}" +
+        ".ace-tomorrow_night-theme .ace_constant.ace_language {color: #BB7031;}" +
+        ".ace-tomorrow_night-theme .ace_constant.ace_escape {color: #ebcB8b;}" +
+        ".ace-tomorrow_night-theme .ace_constant.ace_numeric {color: ${args[5]};}" +
+        ".ace-tomorrow_night-theme .ace_fold {background-color: #4c566a;border-color: #d8dee9;}" +
+        ".ace-tomorrow_night-theme .ace_entity.ace_name.ace_function, .ace-tomorrow_night-theme .ace_entity.ace_name.ace_tag, .ace-tomorrow_night-theme .ace_support.ace_function, .ace-tomorrow_night-theme .ace_variable, .ace-tomorrow_night-theme .ace_variable.ace_language {color: ${args[7]};}" +
+        ".ace-tomorrow_night-theme .ace_string {color: ${args[2]};}" +
+        ".ace-tomorrow_night-theme .ace_comment {color: ${args[13]};}" +
+        ".ace-tomorrow_night-theme .ace_indent-guide {box-shadow: inset -1px 0 0 0 #434c5eb3;}";
+    
+    t.\$selectionColorConflict = !0;
 
-        var r = e("../lib/dom");
-        r.importCssString(t.cssText, t.cssClass);
+    var r = e("../lib/dom");
+    r.importCssString(t.cssText, t.cssClass);
+});
+
+(function () {
+    window.require(["ace/theme/nord_dark"], function (m) {
+        if (typeof module == "object" && typeof exports == "object" && module) {
+            module.exports = m;
+        }
     });
-
-    (function () {
-        window.require(["ace/theme/nord_dark"], function (m) {
-            if (typeof module == "object" && typeof exports == "object" && module) {
-                module.exports = m;
-            }
-        });
-    })();
-    EOL
+})();
+EOL
 }
 
 
